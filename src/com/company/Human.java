@@ -1,4 +1,6 @@
 package com.company;
+import com.company.devices.Car;
+import com.company.devices.Phone;
 import java.util.Date;
 
 public class Human {
@@ -9,6 +11,9 @@ public class Human {
     private Car car;
     private Double salary = 2300.0;
 
+    public String toString(){
+        return firstName+" "+lastName;
+    }
     public void getCar() {
         if(car == null){
             System.out.println("Your car: You don't have a car");

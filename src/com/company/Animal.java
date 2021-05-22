@@ -5,6 +5,10 @@ public class Animal {
     private Double weight;
     String name;
 
+    public String toString(){
+        return species+" "+name;
+    }
+
     public Animal(String species) {
         this.species = species;
         if (this.species == "dog") {
