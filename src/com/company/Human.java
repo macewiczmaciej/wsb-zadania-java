@@ -10,7 +10,11 @@ public class Human {
     private Double salary = 2300.0;
 
     public void getCar() {
-        System.out.println(this.car);
+        if(car == null){
+            System.out.println("Your car: You don't have a car");
+        }else{
+            System.out.println("Your car: "+car.producer+' '+car.model);
+        }
     }
     public void setCar(Car car){
         if (car.price<this.salary){
