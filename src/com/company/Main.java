@@ -33,13 +33,30 @@ public class Main {
 //        System.out.println(Hans);
 //        System.out.println(doge);
 
-        Phone phone1 = new Phone();
-        phone1.producer = "Samsung";
-        phone1.model = "Galaxy S20";
-        phone1.yearOfProduction = 2019;
+//        Phone phone1 = new Phone();
+//        phone1.producer = "Samsung";
+//        phone1.model = "Galaxy S20";
+//        phone1.yearOfProduction = 2019;
+//
+//        System.out.println(phone1.toString());
+//
+//        phone1.turnOn();
 
-        System.out.println(phone1.toString());
+        Human person1 = new Human();
+        Human person2 = new Human();
+        person1.firstName = "Janusz";
+        person2.firstName = "Mirek";
+        person1.cash = 500.0;
+        person2.cash = 3000.0;
+        Animal pet1 = new Animal("dog");
+        pet1.name = "Reksio";
+        Animal pet2 = new Animal("dog");
+        pet2.name = "Burek";
+        person1.pet = pet1;
 
-        phone1.turnOn();
+        pet1.sell(person1,person2,200.0);
+        person1.sell(person1,person2,300.0);
+
+
     }
 }

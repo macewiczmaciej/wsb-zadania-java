@@ -3,13 +3,14 @@ import com.company.devices.Car;
 import com.company.devices.Phone;
 import java.util.Date;
 
-public class Human {
+public class Human implements Salleable{
     String firstName;
     String lastName;
     Phone phone;
     Animal pet;
     private Car car;
     private Double salary = 2300.0;
+    Double cash;
 
     public String toString(){
         return firstName+" "+lastName;
@@ -50,5 +51,10 @@ public class Human {
             System.out.println("-------------------------");
         }
 
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        System.out.println("Don't try it bro! You cannot sell humans here");
     }
 }
