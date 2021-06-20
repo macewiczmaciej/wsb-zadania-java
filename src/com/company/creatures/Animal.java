@@ -1,11 +1,14 @@
-package com.company;
+package com.company.creatures;
+
+import com.company.Human;
+import com.company.Salleable;
 
 import javax.lang.model.type.NullType;
 
-public class Animal implements Salleable{
+abstract public class Animal implements Salleable, Feedable {
     public final String species;
+    public String name;
     private Double weight;
-    String name;
 
 
 
@@ -24,7 +27,7 @@ public class Animal implements Salleable{
         }
     }
 
-    void feed() {
+    public void feed() {
         if(this.weight>0) {
             weight += 1;
             System.out.println("Your pet has been fed");
@@ -34,7 +37,7 @@ public class Animal implements Salleable{
         }
     }
 
-    void takeForAWalk() {
+    public void takeForAWalk() {
         if (this.weight > 0) {
             weight -= 1;
             System.out.println("Your pet came back from a walk");
@@ -42,7 +45,10 @@ public class Animal implements Salleable{
             System.out.println("Your pet is dead. You degenerate!");
         }
     }
+    @Override
+    public void feed(Double foodWeight) {
 
+    }
     @Override
     public void sell(Human seller, Human buyer, Double price) {
         if(seller.pet.hashCode() == this.hashCode()){

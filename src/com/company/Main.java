@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
@@ -48,9 +49,9 @@ public class Main {
         person2.firstName = "Mirek";
         person1.cash = 5000.0;
         person2.cash = 30000.0;
-        Animal pet1 = new Animal("dog");
+        Animal pet1 = new Animal("dog") { };
         pet1.name = "Reksio";
-        Animal pet2 = new Animal("dog");
+        Animal pet2 = new Animal("dog") { };
         pet2.name = "Burek";
         person1.pet = pet1;
 

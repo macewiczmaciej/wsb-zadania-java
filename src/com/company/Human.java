@@ -1,4 +1,5 @@
 package com.company;
+import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 import java.util.Date;
@@ -7,7 +8,7 @@ public class Human implements Salleable{
     public String firstName;
     public String lastName;
     public Phone phone;
-    Animal pet;
+    public Animal pet;
     private Car car;
     private Double salary = 2300.0;
     public Double cash;
