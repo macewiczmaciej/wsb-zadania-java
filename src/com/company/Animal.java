@@ -51,8 +51,10 @@ public class Animal implements Salleable{
                 seller.cash += price;
                 buyer.pet = seller.pet;
                 seller.pet = null;
+                System.out.println("-------------------------");
                 System.out.println("SUCCESS!");
                 System.out.println(buyer.firstName+" just bought "+this.name+" for "+price+" from "+seller.firstName);
+                System.out.println("-------------------------");
             }
             else{
                 System.out.println(seller.firstName+" has this pet, but "+buyer+" is poor");

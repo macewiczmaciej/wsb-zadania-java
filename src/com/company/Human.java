@@ -4,14 +4,20 @@ import com.company.devices.Phone;
 import java.util.Date;
 
 public class Human implements Salleable{
-    String firstName;
-    String lastName;
-    Phone phone;
+    public String firstName;
+    public String lastName;
+    public Phone phone;
     Animal pet;
     private Car car;
     private Double salary = 2300.0;
-    Double cash;
+    public Double cash;
 
+    public Car getHumanCar(){
+        return this.car;
+    }
+    public void setHumanCar(Car car){
+        this.car = car;
+    }
     public String toString(){
         return firstName+" "+lastName;
     }
