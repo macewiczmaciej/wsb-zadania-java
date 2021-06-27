@@ -2,7 +2,7 @@ package com.company.devices;
 
 import com.company.Human;
 
-public class Car extends Device {
+public abstract class Car extends Device {
     String color;
     Double engineVolume;
     public Double price;
@@ -39,4 +39,5 @@ public class Car extends Device {
             System.out.println(seller.firstName+" is scammer, he doesn't have this car");
         }
     }
+    protected abstract void refuel();
 }

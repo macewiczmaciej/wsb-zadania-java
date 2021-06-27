@@ -58,7 +58,11 @@ public class Main {
         pet1.sell(person1,person2,200.0);
         person1.sell(person1,person2,1.0);
 
-        Car car1 = new Car("Skoda","Octavia");
+        Car car1 = new Car("Skoda", "Octavia") {
+            @Override
+            public void refuel() {
+            }
+        };
         person1.setHumanCar(car1);
 
         car1.sell(person1,person2,25000.0);
@@ -69,5 +73,8 @@ public class Main {
         person1.phone = phone1;
 
         phone1.sell(person1,person2,2599.99);
+
+        phone1.installAnApp("Omega",10.11,"10.38.1.23");
+
     }
 }
