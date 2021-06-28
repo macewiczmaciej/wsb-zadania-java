@@ -6,6 +6,6 @@ public class Electric extends Car{
     }
 
     @Override
-    protected void refuel() {
+    public void refuel() {
     }
 }

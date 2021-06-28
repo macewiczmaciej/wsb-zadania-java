@@ -2,6 +2,10 @@ package com.company.devices;
 
 import com.company.Human;
 
+import javax.lang.model.type.NullType;
+import java.util.Arrays;
+import java.util.List;
+
 public abstract class Car extends Device {
     String color;
     Double engineVolume;
@@ -20,24 +24,45 @@ public abstract class Car extends Device {
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
-        if(seller.getHumanCar().hashCode() == this.hashCode()){
-            if(buyer.cash >= price){
-                buyer.cash -= price;
-                seller.cash += price;
-                buyer.setHumanCar(seller.getHumanCar());
-                seller.setHumanCar(null);
-                System.out.println("-------------------------");
-                System.out.println("SUCCESS!");
-                System.out.println(buyer.firstName+" just bought "+this.model+" for "+price+" from "+seller.firstName);
-                System.out.println("-------------------------");
-            }
-            else{
-                System.out.println(seller.firstName+" has this car, but "+buyer+" is poor");
+
+        Integer indexBuyerNullValue = null;
+        Integer indexSellerCarValue = null;
+
+        for (int i = 0; i < seller.garage.length; i++) {
+            if(seller.garage[i]!=null){
+                if (seller.garage[i].hashCode() == this.hashCode()) {
+                    indexSellerCarValue = i;
+                    break;
+                }
             }
         }
-        else{
-            System.out.println(seller.firstName+" is scammer, he doesn't have this car");
+
+        int j = 0;
+        while (buyer.garage.length > j) {
+            if (buyer.garage[j] == null) {
+                indexBuyerNullValue = j;
+                break;
+            }
+            j++;
         }
+        if (indexSellerCarValue == null){
+            System.out.println("There no car in seller garage!");
+        }
+        else if (indexBuyerNullValue == null){
+            System.out.println("There no space in buyer garage");
+        }else if (buyer.cash < price){
+            System.out.println("Buyer has no money");
+        }else{
+            System.out.println("--------");
+            System.out.println("SUCCESS");
+            System.out.println(buyer.firstName+" just bought "+this.producer+" "+this.model+" from "+seller.firstName+" for "+price);
+            System.out.println("--------");
+            buyer.setCar(seller.getCar(indexSellerCarValue),indexBuyerNullValue);
+            seller.setCar(null,indexSellerCarValue);
+            buyer.cash -= price;
+            seller.cash += price;
+        }
+
     }
     protected abstract void refuel();
 }

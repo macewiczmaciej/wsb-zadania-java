@@ -6,6 +6,6 @@ public class Diesel extends Car{
     }
 
     @Override
-    protected void refuel() {
+    public void refuel() {
     }
 }

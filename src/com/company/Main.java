@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.creatures.Animal;
 import com.company.devices.Car;
+import com.company.devices.Device;
 import com.company.devices.Phone;
 
 public class Main {
@@ -43,8 +44,10 @@ public class Main {
 //
 //        phone1.turnOn();
 
-        Human person1 = new Human();
-        Human person2 = new Human();
+        Human person3 = new Human();
+        System.out.println(person3.garage.length);
+        Human person1 = new Human(3);
+        Human person2 = new Human(5);
         person1.firstName = "Janusz";
         person2.firstName = "Mirek";
         person1.cash = 5000.0;
@@ -63,9 +66,26 @@ public class Main {
             public void refuel() {
             }
         };
-        person1.setHumanCar(car1);
+        Car car2 = new Car("Ford","Focus"){
+            @Override
+            protected void refuel() {
 
-        car1.sell(person1,person2,25000.0);
+            }
+        };
+        car2.price = 10000.0;
+        car2.yearOfProduction = 2006;
+        Car car3 = new Car("Fiat","Ducato"){
+            @Override
+            public void refuel(){
+            }
+        };
+        car3.price = 12400.0;
+        car3.yearOfProduction = 2010;
+        car1.price = 25000.0;
+        car1.yearOfProduction = 2014;
+        person1.garage[0] = car1;
+        person1.garage[1] = car2;
+        person1.garage[2] = car3;
 
         Phone phone1 = new Phone();
         phone1.model = "8T";
@@ -75,6 +95,19 @@ public class Main {
         phone1.sell(person1,person2,2599.99);
 
         phone1.installAnApp("Omega",10.11,"10.38.1.23");
+
+        person1.garageValue();
+        person1.sortByOld();
+        person2.setCar(car3,0);
+//        person1.getGarage();
+//        person2.getGarage();
+        car1.sell(person1,person2,25000.0);
+//        person1.getGarage();
+//        person2.getGarage();
+        car3.sell(person2,person1,5000.0);
+//        person1.getGarage();
+//        person2.getGarage();
+
 
     }
 }

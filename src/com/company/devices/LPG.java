@@ -6,6 +6,6 @@ public class LPG extends Car{
     }
 
     @Override
-    protected void refuel() {
+    public void refuel() {
     }
 }

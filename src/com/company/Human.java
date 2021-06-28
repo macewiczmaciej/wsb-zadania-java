@@ -2,6 +2,8 @@ package com.company;
 import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
+
+import java.util.Arrays;
 import java.util.Date;
 
 public class Human implements Salleable{
@@ -9,35 +11,66 @@ public class Human implements Salleable{
     public String lastName;
     public Phone phone;
     public Animal pet;
-    private Car car;
+    public Car[] garage;
     private Double salary = 2300.0;
     public Double cash;
 
-    public Car getHumanCar(){
-        return this.car;
+    public Human(){
+        garage = new Car[5];
     }
-    public void setHumanCar(Car car){
-        this.car = car;
+    public Human(Integer garageSize){
+        garage = new Car[garageSize];
     }
+
     public String toString(){
         return firstName+" "+lastName;
     }
-    public void getCar() {
-        if(car == null){
-            System.out.println("Your car: You don't have a car");
-        }else{
-            System.out.println("Your car: "+car.producer+' '+car.model);
+
+    public void garageValue(){
+        double sum = 0;
+        for (Car car : garage) {
+            if(car != null) {
+                sum += car.price;
+            }
+        }
+        System.out.println("Wartość garażu "+this.firstName+" wynosi: "+sum);
+    }
+
+    public void sortByOld(){
+        Arrays.sort(garage);
+        for (Car car : garage) {
+            System.out.println(car);
         }
     }
-    public void setCar(Car car){
-        if (car.price<this.salary){
-            this.car = car;
-            System.out.println("You are so rich, car was bought by cash");
-        }else if(car.price/12<this.salary){
-            this.car = car;
-            System.out.println("You just bought a car on credit");
-        }else{
-            System.out.println("Sorry bro, but you are poor!!");
+
+    public Car getCar(Integer position) {
+        return this.garage[position];
+        }
+
+    public void setCar(Car car, Integer position){
+        this.garage[position] = car;
+    }
+    public void getGarage(){
+        System.out.println("--"+this.firstName+"'s GARAGE--");
+        for (int i = 0; i < this.garage.length; i++) {
+            System.out.println(this.garage[i]);
+        }
+    }
+
+    public void buyCar(Car car, Integer position){
+        if (car.price == null){
+            this.garage[position] = car;
+        }
+        else {
+            if (car.price<this.salary){
+                this.garage[position] = car;
+                System.out.println("You are so rich, car was bought by cash");
+            }else if(car.price/12<this.salary){
+                this.garage[position] = car;
+                System.out.println("You just bought a car on credit");
+            }else{
+                System.out.println("Sorry bro, but you are poor!!");
+            }
         }
     }
 
@@ -57,7 +90,6 @@ public class Human implements Salleable{
             System.out.println("ZUS and US were informed about update.");
             System.out.println("-------------------------");
         }
-
     }
 
     @Override
