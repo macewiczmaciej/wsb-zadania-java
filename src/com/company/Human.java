@@ -23,7 +23,7 @@ public class Human implements Salleable{
     }
 
     public String toString(){
-        return firstName+" "+lastName;
+        return firstName + " " + lastName;
     }
 
     public void garageValue(){
@@ -49,6 +49,7 @@ public class Human implements Salleable{
 
     public void setCar(Car car, Integer position){
         this.garage[position] = car;
+//        car.setOwner(this);
     }
     public void getGarage(){
         System.out.println("--"+this.firstName+"'s GARAGE--");

@@ -2,8 +2,7 @@ package com.company.devices;
 
 import com.company.Human;
 
-import javax.lang.model.type.NullType;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Car extends Device {
@@ -20,6 +19,23 @@ public abstract class Car extends Device {
     public Car(String producer, String model) {
         this.producer = producer;
         this.model = model;
+    }
+
+    List<Human> owners = new ArrayList<>(1);
+
+    public void setOwner(Human human) {
+        this.owners.add(human);
+    }
+    public List<Human> getOwners(){
+        return owners;
+    }
+    public Integer getLastOwner(){
+        if(owners != null && !owners.isEmpty()){
+            return owners.get(owners.size()-1).hashCode();
+        }else{
+            return 0;
+        }
+
     }
 
     @Override
@@ -45,7 +61,10 @@ public abstract class Car extends Device {
             }
             j++;
         }
-        if (indexSellerCarValue == null){
+        if (getLastOwner() != seller.hashCode()){
+            System.out.println("Seller is not last owner of this car");
+        }
+        else if (indexSellerCarValue == null){
             System.out.println("There no car in seller garage!");
         }
         else if (indexBuyerNullValue == null){
@@ -61,8 +80,25 @@ public abstract class Car extends Device {
             seller.setCar(null,indexSellerCarValue);
             buyer.cash -= price;
             seller.cash += price;
+            setOwner(buyer);
         }
 
+    }
+
+    public boolean humanOwner(){
+        if (this.owners.size() > 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean checkTransaction(Human humanA,Human humanB) {
+        for (int i = 0; i < this.owners.size()-1; i++) {
+            if (this.owners.get(i) == humanA & this.owners.get(i+1) == humanB) {
+                return true;
+            }
+        }return false;
     }
     protected abstract void refuel();
 }

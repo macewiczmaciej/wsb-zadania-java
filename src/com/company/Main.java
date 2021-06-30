@@ -49,7 +49,9 @@ public class Main {
         Human person1 = new Human(3);
         Human person2 = new Human(5);
         person1.firstName = "Janusz";
+        person1.lastName = "Wójcik";
         person2.firstName = "Mirek";
+        person2.lastName = "Kosecki";
         person1.cash = 5000.0;
         person2.cash = 30000.0;
         Animal pet1 = new Animal("dog") { };
@@ -101,13 +103,17 @@ public class Main {
         person2.setCar(car3,0);
 //        person1.getGarage();
 //        person2.getGarage();
+        car1.setOwner(person1);
         car1.sell(person1,person2,25000.0);
 //        person1.getGarage();
 //        person2.getGarage();
         car3.sell(person2,person1,5000.0);
 //        person1.getGarage();
 //        person2.getGarage();
+        car1.sell(person2,person1,4000.0);
 
-
+        System.out.println(car1.getOwners());
+        System.out.println(car1.humanOwner());
+        System.out.println(car1.checkTransaction(person2,person1));
     }
 }
