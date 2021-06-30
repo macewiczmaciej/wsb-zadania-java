@@ -115,5 +115,7 @@ public class Main {
         System.out.println(car1.getOwners());
         System.out.println(car1.humanOwner());
         System.out.println(car1.checkTransaction(person2,person1));
+        System.out.println(car1.numberOfTransactions());
+        System.out.println(car1.getTransactionList());
     }
 }

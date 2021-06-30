@@ -9,6 +9,7 @@ public abstract class Car extends Device {
     String color;
     Double engineVolume;
     public Double price;
+    public int nOftransactions = 0;
 
     public String toString(){
         return producer+" "+model;
@@ -21,10 +22,14 @@ public abstract class Car extends Device {
         this.model = model;
     }
 
+    List<Transaction> transactionList = new ArrayList<>(1);
     List<Human> owners = new ArrayList<>(1);
 
     public void setOwner(Human human) {
         this.owners.add(human);
+    }
+    public List<Transaction> getTransactionList(){
+        return transactionList;
     }
     public List<Human> getOwners(){
         return owners;
@@ -81,6 +86,10 @@ public abstract class Car extends Device {
             buyer.cash -= price;
             seller.cash += price;
             setOwner(buyer);
+            this.nOftransactions+=1;
+            Transaction transaction = new Transaction(seller,buyer,price);
+            transactionList.add(transaction);
+
         }
 
     }
@@ -100,5 +109,12 @@ public abstract class Car extends Device {
             }
         }return false;
     }
+
+    public String numberOfTransactions(){
+        String string = "Number of Transactions: "+nOftransactions;
+        return string;
+    }
+
+
     protected abstract void refuel();
 }
