@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.creatures.Animal;
+import com.company.devices.Application;
 import com.company.devices.Car;
 import com.company.devices.Device;
 import com.company.devices.Phone;
@@ -117,5 +118,22 @@ public class Main {
         System.out.println(car1.checkTransaction(person2,person1));
         System.out.println(car1.numberOfTransactions());
         System.out.println(car1.getTransactionList());
+
+        Application app1 = new Application("teams","1.01",39.99);
+        Application app2 = new Application("traficar","3.41",24.59);
+        Application app3 = new Application("papa.io","21.37",20.05);
+        Application app4 = new Application("messenger","1.337",0.0);
+
+        phone1.appInstall(person1,app1);
+        phone1.appInstall(person1,app2);
+        phone1.appInstall(person1,app3);
+        phone1.appInstall(person1,app4);
+
+        System.out.println(phone1.isAppInstalled(app2));
+        System.out.println(phone1.isAppInstalled("teams"));
+        System.out.println(phone1.freeApps());
+        System.out.println(phone1.totalAppsValue());
+        phone1.alSortedList();
+        phone1.priceSortedList();
     }
 }

@@ -1,5 +1,4 @@
 package com.company.devices;
-
 import com.company.Human;
 
 import java.util.ArrayList;
